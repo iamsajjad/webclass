@@ -1,0 +1,21 @@
+{% load i18n %}
+{% load static %}
+<nav>
+  <input class="menuButton" type="checkbox" id="menuButton" />
+  <label class="lablelicon" for="menuButton"><span class="navicon"></span></label>
+  <img src="{% static 'public/includes/icons/logo.png' %}" alt="" width="25px" height="25px">
+  <ul class="menu">
+    <li><a href="{% url 'providerPage' %}">{% trans 'Provider' %} <img  class="svgs" src="{% static 'public/svgs/review-checkmark.svg' %}" alt=""></a></li>
+    <li><a href="{% url 'dashboardPage' %}">{% trans 'Dashboard' %} <img  class="svgs" src="{% static 'public/svgs/dashboard.svg' %}" alt=""></a></li>
+    <li><a href="{% url 'archivePage' %}">{% trans 'Archive' %} <img  class="svgs" src="{% static 'public/svgs/archive.svg' %}" alt=""></a></li>
+    <li><a href="{% url 'createClusterPage' %}">{% trans 'CreateCluster' %} <img  class="svgs" src="{% static 'public/svgs/doc-new.svg' %}" alt=""></a></li>
+    <li><a href="{% url 'maintainersPage' %}">{% trans 'Maintainers' %} <img  class="svgs" src="{% static 'public/svgs/users.svg' %}" alt=""></a></li>
+    <li><a href="{% url 'bucketPage' %}">{% trans 'Bucket' %} <img  class="svgs" src="{% static 'public/svgs/lock.svg' %}" alt=""></a></li>
+    <li><a href="{% url 'settingsPage' %}">{% trans 'Settings' %} <img  class="svgs" src="{% static 'public/svgs/admin.svg' %}" alt=""></a></li>
+    <li><a href="{% url 'searchPage' %}">{% trans 'Search' %} <img  class="svgs" src="{% static 'public/svgs/search.svg' %}" alt=""></a></li>
+    <li class="authentication">
+      <a class="account" href="">{{ request.user }}</a>
+      <a class="account" href="{% url 'signOut' %}">{% trans 'Sign Out' %}</a>
+    </li>
+  </ul>
+</nav>

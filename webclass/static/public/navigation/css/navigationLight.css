@@ -1,0 +1,50 @@
+/*
+  Navigation
+  by Sajjad alDalwachee
+*/
+body {
+  height: 100%;
+  min-width: 1320px;
+  background: #eeeeee;
+  overflow: auto;
+  background: repeating-linear-gradient( -45deg, #fff 0px, #fff 3px, #ccc 4px, #ccc 8px, #fff 9px);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+body nav {
+  background: white;
+}
+
+body nav ul li a {
+  color: #505050;
+}
+
+body nav ul li a:hover {
+  color: #000000;
+}
+
+body nav ul li a:hover img {
+  filter: invert(0);
+}
+
+body nav ul .authentication {
+  background: #FFFFFF;
+}
+
+body nav ul .authentication .account {
+  color: #AAAAAA;
+}
+
+body nav ul .authentication .account:hover {
+  color: #000000;
+}
+
+/* Title */
+.pageTitle {
+  background: #FFFFFF;
+}
+
+.pageTitle p {
+  color: #808080;
+}

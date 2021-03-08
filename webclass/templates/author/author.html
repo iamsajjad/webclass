@@ -1,0 +1,51 @@
+{% load i18n %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <title>Jungle . Accounts</title>
+    {% include '../includes/head.html' %}
+    <link rel="stylesheet" type="text/css" href="{% static 'author/css/author.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'author/css/pna.css' %}">
+  </head>
+
+  <body>
+    <div id="pna" class="particle-network-animation">
+    </div>
+    <div class="container">
+      <p class="jungle">Jungle</p>
+      <div class="form-structor">
+        <div class="signup">
+          <h2 class="form-title" id="signup"><span>{% trans 'or' %} </span>{% trans 'Sign up' %}</h2>
+          <form class="" action="{% url 'signUp' %}" method="post">{% csrf_token %}
+            <div class="form-holder">
+              <input type="text" class="input" name="code" placeholder="{% trans 'Code' %}" autocomplete="off" />
+              <input type="text" class="input" name="username" placeholder="{% trans 'Username' %}" />
+              <input type="email" class="input" name="email" placeholder="{% trans 'Email' %}" />
+              <input type="password" class="input" name="password" placeholder="{% trans 'Password' %}" />
+            </div>
+            <button class="submit-btn" type="submit">{% trans 'Sign up' %}</button>
+          </form>
+        </div>
+        <div class="login slide-up">
+          <div class="center">
+            <h2 class="form-title" id="login"><span>{% trans 'or' %} </span>{% trans 'Sign In' %}</h2>
+            <form class="" action="{% url 'signIn' %}" method="post">{% csrf_token %}
+              <div class="form-holder">
+                <input type="hidden" name="next" value="{{ nextPage }}" />
+                <input type="text" class="input" name="username" placeholder="{% trans 'Username' %}" />
+                <input type="password" class="input" name="password" placeholder="{% trans 'Password' %}" />
+              </div>
+              <input type="submit" class="submit-btn" value="{% trans 'Sign In' %}">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="{% static 'public/jquery/jquery-3.4.1.min.js' %}"></script>
+    <script src="{% static 'author/js/pna.js' %}"></script>
+    <script src="{% static 'author/js/script.js' %}"></script>
+  </body>
+
+</html>
