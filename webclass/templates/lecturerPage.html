@@ -48,41 +48,82 @@
 
       </div>
     </header>
-      <div class="lessons">
-        <div class="classes">
-          <div id="content-ctrl">
-            <a href="{% url 'createClassPage' %}">
-              <div class="container-ctrl">
-                <div class="flipper">
-                  <div class="front">
-                    <img src="{% static 'img/plus.png' %}" alt="cherry blossoms">
+    <section>
+      <div>
+        <h2 class="section-title" style="color: teal;">Our Lecturers</h2>
+        </br></br>
+        <div>
+
+          <div class="cards">
+            <!-- <h2 style = "text-align: center">Interactive Image Card</h2> -->
+            <div class="w3-card-4" style="width:350px; margin: auto">
+              <div class="container img-wrapper">
+                <img src="{% static 'img/lect1.jpg' %}" style="width: 200px ;height: 100px;">
+                <!-- <div class="overlay w3-border w3-border-blue">
+                  <div class="text">
+                  <div class="quote">Doctor</div>
+                  </div> -->
+                </div>
+                <div class="w3-container w3-center w3-blue title">
+                  <h4>Dr. Sara Ali</h4>
+                  <p>Medicine</p>
+                </div>
+                <div>Great teacher has his own love of learning and inspires students with his passion for education and for
+                  the course material. He constantly renews himself as a professional on his quest to provide students with
+                  the highest quality of education possible. This teacher has no fear of learning new teaching strategies or
+                  incorporating new technologies into lessons, and always seems to be the one who is willing to share what
+                  he’s learned with colleagues.</div>
+
+              </div>
+
+
+              <div class="w3-card-4" style="width:350px; margin: auto">
+                <div class="container img-wrapper">
+                  <img src="{% static 'img/lect2.jpg' %}" style="width: 200px ;height: 100px;">
+                  <!-- <div class="overlay w3-border w3-border-blue">
+                    <div class="text">
+                    <div class="quote">Doctor</div>
+                    </div> -->
                   </div>
+                  <div class="w3-container w3-center w3-blue title">
+                    <h4>Dr. Peter Adlock</h4>
+                    <p>Medicine</p>
+                  </div>
+                  <div>Great teacher has his own love of learning and inspires students with his passion for education and for
+                    the course material. He constantly renews himself as a professional on his quest to provide students with
+                    the highest quality of education possible. This teacher has no fear of learning new teaching strategies or
+                    incorporating new technologies into lessons, and always seems to be the one who is willing to share what
+                    he’s learned with colleagues.</div>
+
+                </div>
+
+
+                <div class="w3-card-4" style="width:350px; margin: auto">
+                  <div class="container img-wrapper">
+                    <img src="{% static 'img/lect3.jpg' %}" style="width: 200px ;height: 100px;">
+                    <!-- <div class="overlay w3-border w3-border-blue">
+                      <div class="text">
+                      <div class="quote">Doctor</div>
+                      </div> -->
+                    </div>
+                    <div class="w3-container w3-center w3-blue title">
+                      <h4>Dr. Sam Ahmed</h4>
+                      <p>Medicine</p>
+                    </div>
+                    <div>Great teacher has his own love of learning and inspires students with his passion for education and for
+                      the course material. He constantly renews himself as a professional on his quest to provide students with
+                      the highest quality of education possible. This teacher has no fear of learning new teaching strategies or
+                      incorporating new technologies into lessons, and always seems to be the one who is willing to share what
+                      he’s learned with colleagues.</div>
+
+                  </div>
+
                 </div>
               </div>
-            </a>
-            {% for class in classes %}
-              <a href="{% url 'classPage' classPrimary=class.primary %}">
-                <div class="container-ctrl">
-                  <div class="flipper">
-                    <div class="front">
-                      <img src="{% static 'img/class.jpg' %}" alt="cherry blossoms">
-                      <div  class="title-ctrl">
-                        <span style="font-size: 20px;font-weight: bold;">{{ class.name }}</span>
-                        <span class="text-ctrl">{{ class.stage }}</span>
-                      </div>
-                      {% ifequal request.user|stringformat:"s" class.owner %}
-                      <a href="{% url 'deleteClass' classPrimary=class.primary %}">
-                        <i class="fas fa-trash" style="color:red;font-size:20px;margin: 20px 9px;float:right"></i>
-                      </a>
-                      {% endifequal %}
-                    </div>
-                  </div>
-                </div>
-              </a>
-              {% endfor %}
+            </div>
           </div>
         </div>
-      </div>
+    </section>
       <footer class="footer-section">
         <div class="container">
           <div class="footer-cta pt-5 pb-5">
@@ -175,22 +216,22 @@
           </div>
         </div>
       </footer>
-      <script>
-        function myFunction() {
-          var x = document.getElementById("myTopnav");
-          if (x.className === "topnav") {
-            x.className += " responsive";
-          } else {
-            x.className = "topnav";
-          }
+    <script>
+      function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+          x.className += " responsive";
+        } else {
+          x.className = "topnav";
         }
-      </script>
-      <script src="{% static 'js/jquery.min.js'%}"></script>
-      <script src="{% static 'js/jquery.singlePageNav.min.js' %}"></script>
-      <script src="{% static 'js/parallax.min.js' %}"></script>
-      <script src="{% static 'slick/slick.min.js' %}"></script>
-      <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
-      <script src="{% static 'js/templatemo-scripts.js' %}"></script>
+      }
+    </script>
+    <script src="{% static 'js/jquery.min.js'%}"></script>
+    <script src="{% static 'js/jquery.singlePageNav.min.js' %}"></script>
+    <script src="{% static 'js/parallax.min.js' %}"></script>
+    <script src="{% static 'slick/slick.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/templatemo-scripts.js' %}"></script>
   </body>
 
 </html>

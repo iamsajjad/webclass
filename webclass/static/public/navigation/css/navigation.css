@@ -7,8 +7,7 @@ body {
   min-width: 1320px;
   background: #454545;
   overflow: auto;
-  background: repeating-linear-gradient( -45deg, #000 0px, #000 3px, #333 4px, #333 8px, #000 9px);
-  background-repeat: no-repeat;
+  background: #cccccc;
   background-attachment: fixed;
 }
 

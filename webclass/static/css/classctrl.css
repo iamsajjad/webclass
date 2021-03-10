@@ -1,0 +1,238 @@
+.date {
+  color: #777;
+  font-size: 12px;
+}
+.img-name {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 5px;
+}
+label {
+  background-color: rgb(168, 218, 218);
+  border-radius: 5px;
+  padding: 5px;
+  color: white;
+}
+#feedback-form {
+  width: 600px;
+
+  background-color: #fcfcfc;
+  padding: 20px 50px 40px;
+  box-shadow: 1px 4px 10px 1px #aaa;
+  font-family: sans-serif;
+}
+
+#feedback-form * {
+  box-sizing: border-box;
+}
+
+#feedback-form h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+button {
+  padding: 1.5em auto;
+  margin: 1em auto;
+  border: 1px solid teal;
+  border-radius: 3px;
+  color: teal;
+  background-color: white;
+}
+#feedback-form input {
+  margin-bottom: 15px;
+}
+
+#feedback-form input[type="text"] {
+  display: block;
+  height: 32px;
+  padding: 6px 16px;
+  width: 100%;
+  border: none;
+  background-color: #f3f3f3;
+}
+
+#feedback-form label {
+  color: #777;
+  font-size: 0.8em;
+}
+
+#feedback-form input[type="checkbox"] {
+  float: left;
+}
+
+#feedback-form input:not(:checked) + #feedback-phone {
+  height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+#feedback-form #feedback-phone {
+  transition: 0.3s;
+}
+
+#feedback-form button[type="submit"] {
+  display: block;
+  margin: 20px auto 0;
+  width: 150px;
+  height: 40px;
+  border-radius: 25px;
+  border: none;
+  color: #eee;
+  font-weight: 700;
+  box-shadow: 1px 4px 10px 1px #aaa;
+
+  background: teal; /* Old browsers */
+}
+
+.post {
+  width: 1110px;
+  height: auto;
+  border: teal;
+  border-radius: 5px;
+  display: flex;
+  gap: 20px;
+  padding: 30px 30px 0 20px;
+  flex-direction: column;
+  border: 1px solid rgb(185, 190, 190);
+  border-radius: 5px;
+  margin: 20px 0;
+}
+.about-img {
+  height: 300px;
+  width: auto;
+}
+.text-ctrl {
+  font-size: 14px;
+}
+.title-ctrl {
+  display: flex;
+  padding: 10px 5px;
+  float: left;
+  flex-direction: column;
+}
+.title-ctrl:nth-child(1) {
+  font-size: 19px !important;
+}
+.img-user {
+  width: 50px;
+  height: 50px;
+  margin-right: 5px;
+  border-radius: 50%;
+}
+.img-ctrl {
+  width: 100% !important;
+  height: 250px !important;
+  background-image: url("../img/class.webp");
+  background-size:     cover;
+  background-repeat:   no-repeat;
+  background-position: center center;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+#content-ctrl img {
+  width: 100%;
+}
+
+a {
+  color: black;
+}
+.comment {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 5px 0;
+}
+.com-ctrl {
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+  padding: 10px 0;
+  margin: 10px 0;
+  border-bottom: 1px solid rgb(185, 190, 190);
+}
+.com-ctrl img {
+  width: 40px;
+  border-radius: 50%;
+  height: 40px;
+}
+.caption,
+h1,
+.date {
+  margin: 0;
+  text-align: center;
+}
+.com-input {
+  width: 100%;
+  border-top: 0px;
+  border-right: 0px;
+  border-left: 0px;
+  padding: 0.5rem;
+  outline: none;
+  background: transparent;
+  border-bottom: solid 2px #fff;
+}
+.caption,
+h1 {
+  font-family: "Reenie Beanie", sans-serif;
+  font-size: 2em;
+  padding: 10px 10px 0 10px;
+}
+
+.date {
+  font-size: 0.75em;
+}
+
+.description {
+  font-size: 0.9em;
+  padding: 0 20px 20px 20px;
+  text-align: left;
+}
+
+.container-ctrl {
+  perspective: 1000px;
+  display: inline-block;
+  margin: 3%;
+}
+.lessons {
+  margin-bottom: 150px;
+}
+.container-ctrl:hover .flipper {
+  /*  transform: rotateY(180deg)*/
+}
+
+.container-ctrl,
+.front,
+.back {
+  width: 250px;
+  height: 250px;
+}
+
+.flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.front,
+.back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 250px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.front {
+  z-index: 2;
+}
+
+.back {
+  /*  transform: rotateY(180deg);*/
+}
+
+#content-ctrl {
+  text-align: center;
+}

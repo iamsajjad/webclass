@@ -48,41 +48,69 @@
 
       </div>
     </header>
-      <div class="lessons">
-        <div class="classes">
-          <div id="content-ctrl">
-            <a href="{% url 'createClassPage' %}">
-              <div class="container-ctrl">
-                <div class="flipper">
-                  <div class="front">
-                    <img src="{% static 'img/plus.png' %}" alt="cherry blossoms">
-                  </div>
-                </div>
-              </div>
-            </a>
-            {% for class in classes %}
-              <a href="{% url 'classPage' classPrimary=class.primary %}">
-                <div class="container-ctrl">
-                  <div class="flipper">
-                    <div class="front">
-                      <img src="{% static 'img/class.jpg' %}" alt="cherry blossoms">
-                      <div  class="title-ctrl">
-                        <span style="font-size: 20px;font-weight: bold;">{{ class.name }}</span>
-                        <span class="text-ctrl">{{ class.stage }}</span>
-                      </div>
-                      {% ifequal request.user|stringformat:"s" class.owner %}
-                      <a href="{% url 'deleteClass' classPrimary=class.primary %}">
-                        <i class="fas fa-trash" style="color:red;font-size:20px;margin: 20px 9px;float:right"></i>
-                      </a>
-                      {% endifequal %}
-                    </div>
-                  </div>
-                </div>
-              </a>
-              {% endfor %}
-          </div>
-        </div>
+    <div class="container">
+      <div class="img-ctrl">
       </div>
+      <p style="font-size:30px; font-weight:bold;"> Class name : {{ requstedClass.name }}
+      <span style="font-size:20px; font-weight:300;"> &nbsp;&nbsp;&nbsp; Stage : {{ requstedClass.stage }}</span>
+      </p>
+      <div class="post">
+        <div class="img-name">
+          <span><img src="{% static 'img/footer.jpg' %}" class="img-user" /><span style="font-weight:bold;">{{ request.user }}</span>
+          </span>
+        </div>
+        <form action="{% url 'createPost' classPrimary=requstedClass.primary %}" method="post" enctype="multipart/form-data"> {% csrf_token %}
+          <input type="text" class="com-input" name="title" placeholder="Title"></input>
+          <input type="textarea" class="com-input" name="text" placeholder="Text"></input>
+          <input type="file" id="file" name="postFile">
+          <button type="submit">Post</button>
+        </form>
+
+      </div>
+
+      <div style="background:red;">
+        <p>{{ post.title }}</p>
+        <p>{{ post.text }}</p>
+      </div>
+
+      {% for post in posts %}
+      <div class="post">
+        <div class="img-name">
+          <span><img src="{% static 'img/footer.jpg' %}" class="img-user" /><span style="font-weight:bold;">{{ post.owner }}</span>
+            <span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ post.date }}</span>
+            <span >
+              {% ifequal request.user|stringformat:"s" post.owner %}
+              <a href="{% url 'deletePost' classPrimary=requstedClass.primary postPrimary=post.primary %}">
+                <i class="fas fa-trash" style="color:red;font-size:20px;margin: 20px 9px;float:right"></i>
+              </a>
+              {% endifequal %}
+            </span>
+        </div>
+        <div style="font-size: 28px;font-weight:bold;">{{ post.title }}</div>
+        <div style="border-bottom: 1px solid rgb(185, 190, 190);">{{ post.text }}</div>
+        </hr>
+        {% if post.hasFile %}
+        <a style="color:blue" href="{{ post.postFile.url }}" download >Download File</a>
+        {% endif %}
+        <div>comment : {{ post.comments.all|length }}</div>
+        <div class="comment">
+          {% for userComment in post.comments.all %}
+          <div class="com-ctrl">
+            <div><img src="{% static 'img/footer.jpg' %}">
+              <span>{{ userComment.owner }}</span>
+            </div>
+            <div>{{ userComment.text }}</div>
+          </div>
+          {% endfor %}
+
+          <form action="{% url 'addComment' classPrimary=requstedClass.primary postPrimary=post.primary %}" method="post"> {% csrf_token %}
+            <input name="text" type="text" class="com-input" placeholder="write comment" />
+          </form>
+        </div>
+
+      </div>
+      {% endfor %}
+
       <footer class="footer-section">
         <div class="container">
           <div class="footer-cta pt-5 pb-5">

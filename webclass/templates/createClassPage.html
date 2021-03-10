@@ -48,41 +48,18 @@
 
       </div>
     </header>
-      <div class="lessons">
-        <div class="classes">
-          <div id="content-ctrl">
-            <a href="{% url 'createClassPage' %}">
-              <div class="container-ctrl">
-                <div class="flipper">
-                  <div class="front">
-                    <img src="{% static 'img/plus.png' %}" alt="cherry blossoms">
-                  </div>
-                </div>
-              </div>
-            </a>
-            {% for class in classes %}
-              <a href="{% url 'classPage' classPrimary=class.primary %}">
-                <div class="container-ctrl">
-                  <div class="flipper">
-                    <div class="front">
-                      <img src="{% static 'img/class.jpg' %}" alt="cherry blossoms">
-                      <div  class="title-ctrl">
-                        <span style="font-size: 20px;font-weight: bold;">{{ class.name }}</span>
-                        <span class="text-ctrl">{{ class.stage }}</span>
-                      </div>
-                      {% ifequal request.user|stringformat:"s" class.owner %}
-                      <a href="{% url 'deleteClass' classPrimary=class.primary %}">
-                        <i class="fas fa-trash" style="color:red;font-size:20px;margin: 20px 9px;float:right"></i>
-                      </a>
-                      {% endifequal %}
-                    </div>
-                  </div>
-                </div>
-              </a>
-              {% endfor %}
-          </div>
+    <div class="container" style="display: flex; justify-content: center;align-items: center;margin: 30px 0;">
+      <div id="feedback-form">
+        <h2 class="header">Create New Class</h2>
+        <div>
+          <form action="{% url 'createClass' %}" method="post"> {% csrf_token %}
+            <input type="text" name="name" placeholder="name"></input>
+            <input type="text" name="stage" placeholder=" stage"></input>
+              <button type="submit">Create Class</button>
+          </form>
         </div>
       </div>
+    </div>
       <footer class="footer-section">
         <div class="container">
           <div class="footer-cta pt-5 pb-5">
@@ -175,22 +152,22 @@
           </div>
         </div>
       </footer>
-      <script>
-        function myFunction() {
-          var x = document.getElementById("myTopnav");
-          if (x.className === "topnav") {
-            x.className += " responsive";
-          } else {
-            x.className = "topnav";
-          }
+    <script>
+      function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+          x.className += " responsive";
+        } else {
+          x.className = "topnav";
         }
-      </script>
-      <script src="{% static 'js/jquery.min.js'%}"></script>
-      <script src="{% static 'js/jquery.singlePageNav.min.js' %}"></script>
-      <script src="{% static 'js/parallax.min.js' %}"></script>
-      <script src="{% static 'slick/slick.min.js' %}"></script>
-      <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
-      <script src="{% static 'js/templatemo-scripts.js' %}"></script>
+      }
+    </script>
+    <script src="{% static 'js/jquery.min.js'%}"></script>
+    <script src="{% static 'js/jquery.singlePageNav.min.js' %}"></script>
+    <script src="{% static 'js/parallax.min.js' %}"></script>
+    <script src="{% static 'slick/slick.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/templatemo-scripts.js' %}"></script>
   </body>
 
 </html>

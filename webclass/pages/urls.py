@@ -5,9 +5,12 @@ from django.urls import path, include
 from .views import *
 
 urlpatterns = [
-    path('about/', aboutPage, name='aboutPage'),
-    path('contact/', contactPage, name='contactPage'),
-    path('services/', servicesPage, name='servicesPage'),
-    path('classes/', classesPage, name='classesPage'),
     path('', classesPage, name='classesPage'),
+    path('classes/', classesPage, name='classesPage'),
+    path('classes/new/', createClassPage, name='createClassPage'),
+    path('classes/<int:classPrimary>/', classPage, name='classPage'),
+    path('about/', aboutPage, name='aboutPage'),
+    path('services/', servicesPage, name='servicesPage'),
+    path('lecturer/', lecturerPage, name='lecturerPage'),
+    #  path('contact/', contactPage, name='contactPage'),
 ]
