@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
+from author.models import UserSettings
 from classes.models import *
 
 # Create your views here.
@@ -8,9 +9,13 @@ from classes.models import *
 @login_required(login_url='/account/')
 def classesPage(request):
 
+    author = str(request.user)
     classes = Classes.objects.all()
+    settings = UserSettings.objects.get(id=request.user.id)
+
     response = {
         'classes' : classes,
+        'settings' : settings,
     }
 
     return render(request, 'classesPage.html', response)

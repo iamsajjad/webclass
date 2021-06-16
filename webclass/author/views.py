@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.shortcuts import render
+from .models import UserSettings
 
 # Create your views here.
 def accountsPage(request):
@@ -29,12 +30,11 @@ def signIn(request):
 
 def signUp(request):
 
-    original = 'admin'
-    code = request.POST.get('code', '')
     username = request.POST.get('username', '')
     password = request.POST.get('password', '')
     email = request.POST.get('email', '')
-    if str(code) == original:
+    privilege = request.POST.get('privilege', '')
+    if privilege in ['student', 'teacher']:
         try:
             user = User.objects.create_user(username=username, email=email, password=password)
             user.is_staff = True
@@ -43,6 +43,8 @@ def signUp(request):
         except:
             return HttpResponseRedirect('/account/')
         else:
+            author = str(username)
+            UserSettings.objects.create(author=author, privilege=privilege).save()
             return signIn(request)
     else:
         return HttpResponseRedirect('/account/')

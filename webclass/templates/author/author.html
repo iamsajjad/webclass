@@ -19,7 +19,7 @@
           <h2 class="form-title" id="signup"><span>{% trans 'or' %} </span>{% trans 'Sign up' %}</h2>
           <form class="" action="{% url 'signUp' %}" method="post">{% csrf_token %}
             <div class="form-holder">
-              <input type="text" class="input" name="code" placeholder="{% trans 'Code' %}" autocomplete="off" />
+              <input type="text" class="input" name="privilege" placeholder="{% trans 'Privilege' %}" autocomplete="off" />
               <input type="text" class="input" name="username" placeholder="{% trans 'Username' %}" />
               <input type="email" class="input" name="email" placeholder="{% trans 'Email' %}" />
               <input type="password" class="input" name="password" placeholder="{% trans 'Password' %}" />

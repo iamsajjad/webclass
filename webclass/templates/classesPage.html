@@ -51,6 +51,7 @@
       <div class="lessons">
         <div class="classes">
           <div id="content-ctrl">
+            {% if settings.privilege == "teacher" %}
             <a href="{% url 'createClassPage' %}">
               <div class="container-ctrl">
                 <div class="flipper">
@@ -60,26 +61,27 @@
                 </div>
               </div>
             </a>
+            {% endif %}
             {% for class in classes %}
-              <a href="{% url 'classPage' classPrimary=class.primary %}">
-                <div class="container-ctrl">
-                  <div class="flipper">
-                    <div class="front">
-                      <img src="{% static 'img/class.jpg' %}" alt="cherry blossoms">
-                      <div  class="title-ctrl">
-                        <span style="font-size: 20px;font-weight: bold;">{{ class.name }}</span>
-                        <span class="text-ctrl">{{ class.stage }}</span>
-                      </div>
-                      {% ifequal request.user|stringformat:"s" class.owner %}
-                      <a href="{% url 'deleteClass' classPrimary=class.primary %}">
-                        <i class="fas fa-trash" style="color:red;font-size:20px;margin: 20px 9px;float:right"></i>
-                      </a>
-                      {% endifequal %}
+            <a href="{% url 'classPage' classPrimary=class.primary %}">
+              <div class="container-ctrl">
+                <div class="flipper">
+                  <div class="front">
+                    <img src="{% static 'img/class.jpg' %}" alt="cherry blossoms">
+                    <div  class="title-ctrl">
+                      <span style="font-size: 20px;font-weight: bold;">{{ class.name }}</span>
+                      <span class="text-ctrl">{{ class.stage }}</span>
                     </div>
+                    {% ifequal request.user|stringformat:"s" class.owner %}
+                    <a href="{% url 'deleteClass' classPrimary=class.primary %}">
+                      <i class="fas fa-trash" style="color:red;font-size:20px;margin: 20px 9px;float:right"></i>
+                    </a>
+                    {% endifequal %}
                   </div>
                 </div>
-              </a>
-              {% endfor %}
+              </div>
+            </a>
+            {% endfor %}
           </div>
         </div>
       </div>
